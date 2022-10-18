@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script defer src="js/particles.min.js"></script>
+    <script defer src="js/custom.js"></script>
+    <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
+</head>
+
+<header>
+    <nav class="grid">
+        <p>Easy Price</p>
+        <div>
+            <a class="btn_login">Iniciar Sesión</a>
+            <a class="btn_register">Registrarse</a>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="cont_index">
+        <div id="particles-js"></div>
+        <div class="box_index">
+            <div class="title_index grid">
+                <h1>Easy Price</h1>
+                <p>Los precios más accesibles, en las ubicaciones más cercanas, tú index y comparador de precios digitales preferido</p>
+                <p>Tan simple como buscar lo qué deseas a un click de distancia</p>
+            </div>
+            <div>
+                <a>
+                    <img src="img/Shape.svg">
+                    Buscar Producto
+                </a>
+            </div>
+        </div>
+        <div class="cont_login login_register">
+            <h2>Iniciar Sesión</h2>
+            <p class="close_login">X</p>
+            <form id="log_form">
+                <label>Usuario:</label>
+                <input id="username" type="text" name="username" placeholder="Usuario"/>
+                <label>Password:</label>
+                <input id="password" type="password" name="password" placeholder="Contraseña"/>
+                <p>Olvidé la contraseña</p>
+                <button class="submit_bttn submit_login" onclick="login_frm()">Iniciar sesión</button>
+            </form>
+        </div>
+        <div class="cont_register login_register">
+            <h2>Registrar Usuario</h2>
+            <p class="close_register">X</p>
+            <form id="reg_form">
+                <label>Email</label>
+                <input type="mail" name="email_reg" placeholder="user@gmail.com">
+                <label>Nombre</label>
+                <input type="text" name="nombre_reg" placeholder="Jhon Doe">
+                <label>Celular</label>
+                <input type="text" name="cel_reg" placeholder="3178904560">
+                <label>Contraseña</label>
+                <input type="password" name="password_reg" placeholder="¡Contraseña123!">
+                <label>Confirmar Contraseña</label>
+                <input id="confpassword" type="password" name="confpassword_reg" placeholder="¡Contraseña123!" />
+                <button class="submit_bttn submit_register" onclick="reg_frm()">Registrar Usuario</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+<footer>
+
+</footer>
+</html>

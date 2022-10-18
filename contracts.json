@@ -1,0 +1,49 @@
+
+/* Login = All required*/
+
+/* Request */
+{
+    'email':"string",
+    'password':"string"
+}
+
+/* Response */
+{
+    'token':"string",
+    'user_id':"string",
+    'name':"string"
+}
+
+/* Extract data and store it each value in memory */
+
+
+/* Create User = All required */
+{
+    'email':"string",
+    'name':"string",
+    'password':"string",
+    'cel':"string"
+}
+
+/* Response */
+{
+    'token':"string",
+    'user_id':"string",
+    'name':"string"
+}
+
+
+/* Change Password = All required */
+/* Request */
+{
+    'email':"string",
+    'old_password':"string"
+    'new_password':"string"
+}
+
+/* Response */
+{
+    'token':"string",
+    'user_id':"string",
+    'name':"string"
+}
