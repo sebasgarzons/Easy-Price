@@ -99,7 +99,7 @@ async function register_new_password(){
 
   const reg_new_password = {
 
-    email: response_value.name,
+    email: response_value.email,
     password: document.getElementById('actual_password').value,
     new_password: document.getElementById('reg_nw_password').value
 
