@@ -14,6 +14,7 @@
     <script defer src="js/particles.min.js"></script>
     <script defer src="js/custom.js"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <header>
@@ -51,7 +52,7 @@
                 <label>Password:</label>
                 <input id="password" type="password" name="password" placeholder="Contraseña"/>
                 <p>Olvidé la contraseña</p>
-                <button class="submit_bttn submit_login" onclick="login_frm()">Iniciar sesión</button>
+                <button class="submit_bttn submit_login">Iniciar sesión</button>
             </form>
         </div>
         <div class="cont_register login_register">
@@ -59,16 +60,16 @@
             <p class="close_register">X</p>
             <form id="reg_form">
                 <label>Email</label>
-                <input type="mail" name="email_reg" placeholder="user@gmail.com">
+                <input type="mail" name="email_reg" placeholder="user@gmail.com" id="reg_mail_user">
                 <label>Nombre</label>
-                <input type="text" name="nombre_reg" placeholder="Jhon Doe">
+                <input type="text" name="nombre_reg" placeholder="Jhon Doe" id="reg_name_user">
                 <label>Celular</label>
-                <input type="text" name="cel_reg" placeholder="3178904560">
+                <input type="text" name="cel_reg" placeholder="3178904560" id="reg_cel_user">
                 <label>Contraseña</label>
-                <input type="password" name="password_reg" placeholder="¡Contraseña123!">
+                <input type="password" name="password_reg" placeholder="¡Contraseña123!"  id="reg_psswrd_user">
                 <label>Confirmar Contraseña</label>
-                <input id="confpassword" type="password" name="confpassword_reg" placeholder="¡Contraseña123!" />
-                <button class="submit_bttn submit_register" onclick="reg_frm()">Registrar Usuario</button>
+                <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_confpsswrd_user"/>
+                <button class="submit_bttn submit_register">Registrar Usuario</button>
             </form>
         </div>
     </div>
