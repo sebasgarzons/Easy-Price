@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    image: price-front-demo:latest
+    build: .
+    container_name: price-hbtn-front-demo
+    restart: always
+    ports:
+      - "80:80"

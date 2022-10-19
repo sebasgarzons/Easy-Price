@@ -50,6 +50,11 @@ $("#boton_test").click(e => {
   register_new_password();
 });
 
+$('.submit_search').click(e => {
+  e.preventDefault();
+  get_all_products();
+});
+
 
 async function get_user_api() {
 
@@ -66,7 +71,7 @@ async function get_user_api() {
     console.log(data)
     window.localStorage.setItem('authenticate', JSON.stringify(data));
     response_value = JSON.parse(window.localStorage.getItem('authenticate'));
-    location.assign('http://127.0.0.1:5500/home.html')
+    location.assign('https://pricehbtn-demo.azurewebsites.net/home.html')
 
   } catch (error) {
 
@@ -110,7 +115,7 @@ async function register_new_password(){
   try{
     await axios.patch('https://pricehbtn-login.azurewebsites.net/login/update/password/', reg_new_password);
     setTimeout(() => {
-      location.assign('http://127.0.0.1:5500/index.html')
+      location.assign('https://pricehbtn-demo.azurewebsites.net/index.html')
     }, 500);
   }catch(error){
     console.error(error);
@@ -120,7 +125,30 @@ async function register_new_password(){
 
 }
 
+async function get_all_products(){
+
+  var config = {
+    method: 'get',
+    url: 'https://pricehbtn-crud.azurewebsites.net/product/',
+    headers: { 
+      'logintoken': response_value.token,
+    }
+  };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
 console.log('Llegué');
+
+/* token = (response_value.token)
+console.log(token) */
 
 
 
