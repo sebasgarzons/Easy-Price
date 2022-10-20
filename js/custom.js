@@ -30,9 +30,9 @@ let list_products = [
 
 ]
 
-let Storage = localStorage.getItem()
+/* let Storage = localStorage.getItem()
   ? JSON.parse(localStorage.getItem())
-  : [];
+  : []; */
 
 let response_value = JSON.parse(window.localStorage.getItem('authenticate'))??{};
 console.log(response_value);
