@@ -26,6 +26,14 @@ let email
 let name
 let token
 
+let list_products = [
+
+]
+
+let Storage = localStorage.getItem()
+  ? JSON.parse(localStorage.getItem())
+  : [];
+
 let response_value = JSON.parse(window.localStorage.getItem('authenticate'))??{};
 console.log(response_value);
 
@@ -53,6 +61,16 @@ $("#boton_test").click(e => {
 $('.submit_search').click(e => {
   e.preventDefault();
   get_all_products();
+});
+
+$(".bttn_categories").click(e => {
+  e.preventDefault();
+  get_all_categories();
+});
+
+$('.bttn_product').click(e => {
+  e.preventDefault();
+  get_a_product();
 });
 
 
@@ -92,6 +110,7 @@ async function register_user_api() {
   try {
     await axios.post('https://pricehbtn-login.azurewebsites.net/login/register/', reg_user);
     setTimeout(() => {
+      alert('Usuario creado éxitosamente. Por favor inicia sesión')
       window.location.reload(true);
     }, 500);
   } catch (error) {
@@ -100,7 +119,7 @@ async function register_user_api() {
   }
 }
 
-async function register_new_password(){
+async function register_new_password() {
 
   const reg_new_password = {
 
@@ -112,12 +131,13 @@ async function register_new_password(){
 
   console.log(reg_new_password);
 
-  try{
+  try {
     await axios.patch('https://pricehbtn-login.azurewebsites.net/login/update/password/', reg_new_password);
+    alert('Clave cambiada éxitosamente. Por favor inicia sesión de nuevo.')
     setTimeout(() => {
       location.assign('https://pricehbtn-demo.azurewebsites.net/index.html')
     }, 500);
-  }catch(error){
+  } catch (error) {
     console.error(error);
     alert('Error');
   }
@@ -125,13 +145,60 @@ async function register_new_password(){
 
 }
 
-async function get_all_products(){
+async function get_all_products() {
 
   var config = {
     method: 'get',
     url: 'https://pricehbtn-crud.azurewebsites.net/product/',
-    headers: { 
+    headers: {
       'logintoken': response_value.token,
+    }
+  };
+
+  axios(config)
+    .then(function (response) {
+      let temp = ((response.data));
+
+      
+      for (let i = 0; i < temp.length; i++) {
+        Storage.push(temp[i].name);
+      }
+
+      console.log('La lista de productos:' + Storage)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+}
+
+async function get_all_categories() {
+
+  var config = {
+    method: 'get',
+    url: 'https://pricehbtn-crud.azurewebsites.net/product/categories',
+    headers: { 
+      'logintoken': response_value.token,}
+  };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+async function get_a_product() {
+
+  var config = {
+    method: 'patch',
+    url: 'https://pricehbtn-crud.azurewebsites.net/product/by_product',
+    headers: { 
+      'logintoken': response_value.product,
+      'path': response_value.product
     }
   };
   
@@ -145,6 +212,26 @@ async function get_all_products(){
 
 }
 
+
+
+
+
+
+/* async function get_all_productsII() {
+
+  try{
+    await axios.get('https://41f6-181-54-0-71.ngrok.io/product/', {
+      headers:{
+        'logintoken': response_value.token,
+      }
+    });
+  }catch(error){
+    console.error('Error', error);
+  }
+
+} */
+
+console.log('El producto es:' + list_products[0]);
 console.log('Llegué');
 
 /* token = (response_value.token)
