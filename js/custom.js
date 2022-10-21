@@ -68,6 +68,24 @@ function get_name_user(){
   console.log(user_name_value);
 }
 
+/* function set_data_products_search(){
+  const datalist_search = document.getElementById('type_prod_search_datalist')
+  const data_search = JSON.parse(localStorage.getItem('products'));
+
+  data_search.forEach(producto => {
+      datalist_search.innerHTML += `<option value="${producto}">${producto}</option>`
+  });
+} */
+
+/* function set_data_products_create(){
+  const datalist = document.getElementById('type_prod_create_datalist')
+  const data = JSON.parse(localStorage.getItem('products'));
+
+  data.forEach(producto => {
+      datalist.innerHTML += `<option>${producto}</option>`
+  });
+} */
+
 async function get_user_api() {
 
   const user_data = {
@@ -153,7 +171,9 @@ async function get_all_products() {
   const response = await axios(config)
   console.log(response.data)
   localStorage.setItem('products', JSON.stringify(response.data))
-
+  
+/*   set_data_products_search();
+  set_data_products_create(); */
 }
 
 async function get_only_products_by_category(){

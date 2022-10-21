@@ -27,6 +27,7 @@
         </div>
     </nav>
 </header>
+
 <body onload="get_name_user()">
     <div class="cont_crear grid">
         <h2>Crear Producto</h2>
@@ -36,8 +37,9 @@
                     <div>
                         <div>
                             <label>Selecciona el tipo de producto:</label>
-                            <input type="text" id="type_prod_create"  placeholder="Gasolina">
-                            <!-- list="type_prod_create_datalist" -->
+                            <input type="text" id="type_prod_create" placeholder="Gasolina"
+                                list="type_prod_create_datalist">
+                            <!--  -->
                             <datalist id="type_prod_create_datalist">
                             </datalist>
                         </div>
@@ -66,24 +68,23 @@
         <p class="close_register close_register_password">X</p>
         <div class="test">
             <label>Contraseña</label>
-            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password"/>
+            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password" />
             <label>Nueva Contraseña</label>
-            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password"/>
+            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password" />
             <button class="submit_bttn submit_password" id="boton_test">Guardar</button>
         </div>
     </div>
+    <script>
+        const datalist = document.getElementById('type_prod_create_datalist')
+        const data = JSON.parse(localStorage.getItem('products'));
+
+        data.forEach(producto => {
+            datalist.innerHTML += `<option>${producto}</option>`
+        });
+    </script>
 </body>
 <footer>
 
 </footer>
 
-
-<script>
-    const datalist = document.getElementById('type_prod_create_datalist')
-    const data = JSON.parse(localStorage.getItem('products'));
-
-    data.forEach(producto => {
-        datalist.innerHTML += `<option>${producto}</option>`
-    });
-</script>
 </html>

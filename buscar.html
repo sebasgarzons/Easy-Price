@@ -38,7 +38,8 @@
                     <div>
                         <div>
                             <label>Selecciona el tipo de producto:</label>
-                            <input type="text" id="type_prod_search" name="get_product" list="type_prod_search_datalist" placeholder="Gasolina">
+                            <input type="text" id="type_prod_search" name="get_product" list="type_prod_search_datalist"
+                                placeholder="Gasolina">
                             <datalist id="type_prod_search_datalist">
 
                             </datalist>
@@ -59,25 +60,26 @@
         <p class="close_register close_register_password">X</p>
         <div class="test">
             <label>Contraseña</label>
-            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password"/>
+            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password" />
             <label>Nueva Contraseña</label>
-            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password"/>
+            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password" />
             <button class="submit_bttn submit_password" id="boton_test">Guardar</button>
         </div>
     </div>
+
+    <script>
+        const datalist_search = document.getElementById('type_prod_search_datalist')
+        const data_search = JSON.parse(localStorage.getItem('products'));
+
+        data_search.forEach(producto => {
+            datalist_search.innerHTML += `<option value="${producto}">${producto}</option>`
+        });
+    </script>
+
 </body>
 
 <footer>
 
 </footer>
-
-<script>
-    const datalist_search = document.getElementById('type_prod_search_datalist')
-    const data_search = JSON.parse(localStorage.getItem('products'));
-
-    data_search.forEach(producto => {
-        datalist_search.innerHTML += `<option value="${producto}">${producto}</option>`
-    });
-</script>
 
 </html>
