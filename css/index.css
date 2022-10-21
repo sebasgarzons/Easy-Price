@@ -42,6 +42,10 @@ nav {
     padding: 8px 0;
 }
 
+.loginregister{
+    flex-direction: row;
+}
+
 nav>p {
     font-weight: 800;
     font-size: 1.4rem;
@@ -378,10 +382,6 @@ button.submit_bttn {
     margin: auto;
     margin-top: 12px;
     display: table;
-}
-
-.{
-    display: none;
 }
 
 .form_crear_prod>div>div:nth-of-type(2) {
