@@ -17,39 +17,27 @@
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
 </head>
 <header>
     <nav class="grid">
         <p>Easy Price</p>
+        <div>
+            <div>¡Welcome!<span id="user_name"></span>
+            </div>
+            <p class="forgot_psswrd">Olvidé la contraseña</p>
+        </div>
     </nav>
 </header>
 
-<body class="body_home" onload="showHome()">
+<body class="body_home" onload="showHome(), get_name_user()">
 
     <div class="cont_home grid" id="home_greeting">
         <div>
-            <a>
+            <a href="buscar.html">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Buscar
             </a>
-            <a>
+            <a href="crear.html">
                 <i class="fa-solid fa-plus"></i>
                 Crear
             </a>
@@ -106,17 +94,18 @@
                 </div>
             </div>
         </div>
-        <h2>Registrar Usuario</h2>
-        <p class="close_register">X</p>
-        <div class="test">
-            <label>Contraseña</label>
-            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password"/>
-            <label>Nueva Contraseña</label>
-            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password"/>
-            <button class="submit_bttn submit_password" id="boton_test">Guardar</button>
+        <div class="pop_up_change_psswrd">
+            <h2>Cambiar contraseña</h2>
+            <p class="close_register close_register_password">X</p>
+            <div class="test">
+                <label>Contraseña</label>
+                <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password"/>
+                <label>Nueva Contraseña</label>
+                <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password"/>
+                <button class="submit_bttn submit_password" id="boton_test">Guardar</button>
+            </div>
         </div>
     </div>
-
 
 </body>
 <footer>

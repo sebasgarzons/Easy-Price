@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <script defer src="js/particles.min.js"></script>
     <script defer src="js/custom.js"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
@@ -22,9 +21,14 @@
 <header>
     <nav class="grid">
         <p>Easy Price</p>
+        <div>
+            <div>¡Welcome!<span id="user_name"></span>
+            </div>
+            <p class="forgot_psswrd">Olvidé la contraseña</p>
+        </div>
     </nav>
 </header>
-<body>
+<body onload="get_name_user()">
     <div class="cont_crear grid">
         <h2>Crear Producto</h2>
         <div>
@@ -34,21 +38,10 @@
                         <div>
                             <label>Selecciona el tipo de producto:</label>
                             <input type="text" id="type_prod_create"  placeholder="Gasolina">
-<!--                             <datalist id="type_prod_create_datalist">
-list="type_prod_create_datalist"
-                            </datalist> -->
-                        </div>
-<!--                         <div>
-                            <label>Selecciona la tienda</label>
-                            <input type="text" id="type_str_create" list="type_str_create_datalist" placeholder="Alkosto">
-                            <datalist id="type_str_create_datalist">
-                                <option>Granero</option>
-                                <option>Legumbrería</option>
-                                <option>Software Minc</option>
-                                <option>Walmart</option>
-                                <option>Gasolinera</option>
+                            <!-- list="type_prod_create_datalist" -->
+                            <datalist id="type_prod_create_datalist">
                             </datalist>
-                        </div> -->
+                        </div>
                     </div>
                     <div>
                         <h3>Detalles del Producto:</h3>
@@ -68,28 +61,16 @@ list="type_prod_create_datalist"
                 </div>
             </form>
         </div>
-        <div>
-            <h3>Crear Tienda</h3>
-            <form id="crear_tienda" class="form_crear_tienda">
-                <label>Nombre de la tienda</label>
-                <input type="text" placeholder="Walmart" id="reg_tienda">
-                <label>Dirección de la tienda</label>
-                <input type="text" placeholder="Calle Falsa 1234 # 71c-82" id="reg_dic_tienda">
-                <a class="save_bttn">
-                    <i class="fa-solid fa-plus"></i>
-                    Guardar
-                </a>
-            </form>
-        </div>
-        <div class="resumen_prod">
-            <div class="card_user card_user_save">
-                <div>
-                    <h3>Producto: Gasolina</h3>
-                    <h4>Tienda: A&C</h4>
-                    <p>Precio: $10000</p>
-                </div>
-                <div class="close"></div>
-            </div>
+    </div>
+    <div class="pop_up_change_psswrd">
+        <h2>Cambiar contraseña</h2>
+        <p class="close_register close_register_password">X</p>
+        <div class="test">
+            <label>Contraseña</label>
+            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password"/>
+            <label>Nueva Contraseña</label>
+            <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password"/>
+            <button class="submit_bttn submit_password" id="boton_test">Guardar</button>
         </div>
     </div>
 </body>
@@ -98,11 +79,11 @@ list="type_prod_create_datalist"
 </footer>
 
 
-<!-- <script>
+<script>
     const datalist = document.getElementById('type_prod_create_datalist')
     const data = JSON.parse(localStorage.getItem('products'));
 
     data.forEach(producto => {
         datalist.innerHTML += `<option>${producto}</option>`
     });
-</script> -->
+</script>

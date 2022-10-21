@@ -31,6 +31,10 @@ h6 {
     z-index: -1;
 }
 
+header{
+    padding: 2rem 0;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -45,7 +49,17 @@ nav>p {
 
 nav>div {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 0;
+}
+
+nav>div>div{
+    font-size: 1.2rem;
+}
+
+.forgot_psswrd{
+    font-size: 0.7rem;
+    cursor: pointer;
 }
 
 nav a {
@@ -209,12 +223,18 @@ button.submit_bttn {
 /* ========================================================= */
 
 .body_home {
-    background-color: #c6ffff;
+    background-color: #24183c;
+    color: #c6ffff;
 }
 
 #home_greeting {
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
     display: none;
+}
+
+.cont_home{
+    position: relative;
+    padding-bottom: 4rem;
 }
 
 .cont_home>div:nth-of-type(1) {
@@ -231,6 +251,7 @@ button.submit_bttn {
     color: #ffffff;
     border-radius: 14px;
     box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
+    text-decoration: none;
 }
 
 .cont_home>div:nth-of-type(1) a:nth-of-type(1) {
@@ -334,7 +355,6 @@ button.submit_bttn {
     outline: none;
     margin-bottom: 11px;
     width: 100%;
-    max-width: 10.5rem;
     padding-left: 12px;
 }
 
@@ -344,10 +364,7 @@ button.submit_bttn {
 }
 
 .form_crear_prod>div>div:nth-of-type(1) {
-    display: flex;
-    flex-direction: row;
-    gap: 4rem;
-    justify-content: space-around;
+
 }
 
 .save_bttn{
@@ -361,6 +378,10 @@ button.submit_bttn {
     margin: auto;
     margin-top: 12px;
     display: table;
+}
+
+.{
+    display: none;
 }
 
 .form_crear_prod>div>div:nth-of-type(2) {
@@ -414,25 +435,59 @@ button.submit_bttn {
     
 }
 
-
-.test{
-    padding-bottom: 82px;
-}
-
 .submit_password{
     cursor: pointer;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
-body{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight:300;
-  background-color:lightblue;
-  color:#FFF;
+.pop_up_change_psswrd{
+    position: absolute;
+    border-radius: 25px;
+    border: 2px inset #cccccc;
+    background-color: #ffffff;
+    color: #000000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5rem 4rem;
+    display: none;
 }
-section{
-  text-align:center;
+
+.pop_up_change_psswrd label{
+    text-align: left
 }
+
+.pop_up_change_psswrd input{
+    width: 100%;
+    margin: 1% auto;
+    text-align: center;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #008eaa;
+    display: block;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 28%);
+    outline: none;
+    margin-bottom: 11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .footer #button{
 	width:35px;
 	height:35px;
