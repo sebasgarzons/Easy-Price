@@ -16,6 +16,8 @@
     <script defer src="js/custom.js"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 <header>
     <nav class="grid">
@@ -31,15 +33,12 @@
                     <div>
                         <div>
                             <label>Selecciona el tipo de producto:</label>
-                            <input type="text" id="type_prod_create" list="type_prod_create_datalist" placeholder="Gasolina">
-                            <datalist id="type_prod_create_datalist">
-                                <option>Gasolina</option>
-                                <option>Tornillo</option>
-                                <option>Leche</option>
-                                <option>Legumbres</option>
-                            </datalist>
+                            <input type="text" id="type_prod_create"  placeholder="Gasolina">
+<!--                             <datalist id="type_prod_create_datalist">
+list="type_prod_create_datalist"
+                            </datalist> -->
                         </div>
-                        <div>
+<!--                         <div>
                             <label>Selecciona la tienda</label>
                             <input type="text" id="type_str_create" list="type_str_create_datalist" placeholder="Alkosto">
                             <datalist id="type_str_create_datalist">
@@ -49,18 +48,19 @@
                                 <option>Walmart</option>
                                 <option>Gasolinera</option>
                             </datalist>
-                        </div>
+                        </div> -->
                     </div>
                     <div>
                         <h3>Detalles del Producto:</h3>
-                    </br> <br>  
+                        <label>Nombre del Producto:</label>
+                        <input type="text" id="create_nom" placeholder="Sal">
                         <label>Precio del producto:</label>
                         <input type="number" placeholder="14500" id="create_prec">
                         <label>Unidades</label>
                         <input type="number" placeholder="2" id="create_unic">
                     </div>
                     <div>
-                        <a class="save_bttn">
+                        <a class="save_bttn create_pr_bttn">
                             <i class="fa-solid fa-plus"></i>
                             Guardar
                         </a>
@@ -96,3 +96,13 @@
 <footer>
 
 </footer>
+
+
+<!-- <script>
+    const datalist = document.getElementById('type_prod_create_datalist')
+    const data = JSON.parse(localStorage.getItem('products'));
+
+    data.forEach(producto => {
+        datalist.innerHTML += `<option>${producto}</option>`
+    });
+</script> -->

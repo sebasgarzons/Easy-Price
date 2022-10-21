@@ -26,14 +26,89 @@
 </header>
 
 <body>
+    <div class="cont_crear grid">
+        <h2>Crear Producto</h2>
+        <div>
+            <form id="crear_prod" class="form_crear_prod">
+                <div>
+                    <div>
+                        <div>
+                            <label>Selecciona el tipo de producto:</label>
+                            <input type="text" id="type_prod_search" name="get_product" list="type_prod_search_datalist" placeholder="Gasolina">
+                            <datalist id="type_prod_search_datalist">
+
+                            </datalist>
+                        </div>
+                        <div>
+                            <label>Selecciona la tienda</label>
+                            <input type="text" id="type_str_create" list="type_str_create_datalist" placeholder="Alkosto">
+                            <datalist id="type_str_create_datalist">
+                                <option>Granero</option>
+                                <option>Legumbrería</option>
+                                <option>Software Minc</option>
+                                <option>Walmart</option>
+                                <option>Gasolinera</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Detalles del Producto:</h3>
+                        <label>Precio del producto:</label>
+                        <input type="number" placeholder="14500" id="create_prec">
+                        <label>Unidades</label>
+                        <input type="number" placeholder="2" id="create_unic">
+                    </div>
+                    <div>
+                        <a class="save_bttn">
+                            <i class="fa-solid fa-plus"></i>
+                            Guardar
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>
+            <h3>Crear Tienda</h3>
+            <form id="crear_tienda" class="form_crear_tienda">
+                <label>Nombre de la tienda</label>
+                <input type="text" placeholder="Walmart" id="reg_tienda">
+                <label>Dirección de la tienda</label>
+                <input type="text" placeholder="Calle Falsa 1234 # 71c-82" id="reg_dic_tienda">
+                <a class="save_bttn">
+                    <i class="fa-solid fa-plus"></i>
+                    Guardar
+                </a>
+            </form>
+        </div>
+        <div class="resumen_prod">
+            <div class="card_user card_user_save">
+                <div>
+                    <h3>Producto: Gasolina</h3>
+                    <h4>Tienda: A&C</h4>
+                    <p>Precio: $10000</p>
+                </div>
+                <div class="close"></div>
+            </div>
+        </div>
+    </div>
     <div class="buscar">
         <button class="submit_bttn submit_search">Buscar</button>
         <button class="submit_bttn bttn_categories">Categories</button>
         <button class="submit_bttn bttn_product">Producto</button>
     </div>
 </body>
+
 <footer>
 
 </footer>
+
+<script>
+    const datalist_search = document.getElementById('type_prod_search_datalist')
+    const data_search = JSON.parse(localStorage.getItem('products'));
+
+    data_search.forEach(producto => {
+        datalist_search.innerHTML += `<option value="${producto}">${producto}</option>`
+    });
+</script>
 
 </html>
