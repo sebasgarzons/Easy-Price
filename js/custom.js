@@ -187,7 +187,6 @@ async function get_only_products_by_category(){
       'logintoken': response_value.token,
     }
   };
-
   const response = await axios(config)
   console.log(response.data)
 
@@ -196,7 +195,8 @@ async function get_only_products_by_category(){
 async function create_product(){
   let selected_value = document.getElementById('type_prod_create').value;
   console.log(selected_value);
-
+  alert('Producto creado éxitosamente');
+  location.assign('https://pricehbtn-demo.azurewebsites.net/home.html')
     const response = await axios.post(
       "https://pricehbtn-crud.azurewebsites.net/product",{
         headers: {
