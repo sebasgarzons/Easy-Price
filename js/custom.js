@@ -221,7 +221,7 @@ async function create_product(){
     body: data
  */
 
-
+// This works.
     var config = {
       method: 'post',
       url: 'https://pricehbtn-crud.azurewebsites.net/product/',
