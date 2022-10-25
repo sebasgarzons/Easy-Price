@@ -204,6 +204,10 @@ async function create_product(){
     category: selected_value,
     user_id: response_value.user_id
   };
+
+  const headers = {
+    'logintoken': response_value.token
+  }
   console.log('El valor de los campos es ', data)
   console.log(response_value.token)
 /*   response = fetch("", {
@@ -218,8 +222,17 @@ async function create_product(){
  */
 
 
+    try {
+      await axios.post('https://pricehbtn-login.azurewebsites.net/login/register/', data, headers);
 
-    var requestOptions = {
+
+
+    } catch (error) {
+      console.error('Error', error);
+      alert(error.message);
+    }
+
+/*     var requestOptions = {
       method: 'POST',
       headers: {
         'logintoken': response_value.token,
@@ -232,7 +245,7 @@ async function create_product(){
     fetch("https://pricehbtn-crud.azurewebsites.net/product/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error)); */
 
 
   /* location.assign('https://pricehbtn-demo.azurewebsites.net/home.html') */
