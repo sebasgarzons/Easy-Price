@@ -192,6 +192,12 @@ async function get_only_products_by_category(){
 
 }
 
+
+
+
+
+
+
 async function create_product(){
   let selected_value = document.getElementById('type_prod_create').value;
   console.log(selected_value);
@@ -208,21 +214,25 @@ async function create_product(){
 /*   const headers = {
     'logintoken': response_value.token
   } */
+
   console.log('El valor de los campos es ', data)
   console.log(response_value.token)
-/*   response = fetch("", {
+  response = fetch("", {
     method: "POST",
     headers: {
       'logintoken': response_value.token,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-  
     body: data
- */
+  });
+
+
+
+}
 
 // This works.
-    var config = {
+/*     var config = {
       method: 'post',
       url: 'https://pricehbtn-crud.azurewebsites.net/product/',
       headers: {
@@ -232,7 +242,13 @@ async function create_product(){
     };
   
     const response = await axios(config)
-    console.log(response)
+    console.log(response) */
+
+
+
+
+
+
 
 
 /*     try {
@@ -241,13 +257,13 @@ async function create_product(){
           'logintoken': response_value.token
         }
       }, data);
-
-
-
+      // Acá va tú código L
     } catch (error) {
       console.error('Error', error);
       alert(error.message);
     } */
+
+
 
 /*     var requestOptions = {
       method: 'POST',
@@ -302,4 +318,4 @@ async function create_product(){
 
   /* console.log('Llegué hasta el response', response.data) */
 
-}
+
