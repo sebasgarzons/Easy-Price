@@ -196,8 +196,8 @@ async function create_product(){
   let selected_value = document.getElementById('type_prod_create').value;
   console.log(selected_value);
   alert('Producto creado éxitosamente');
-  location.assign('https://pricehbtn-demo.azurewebsites.net/home.html')
-/*     const response = await axios.post(
+  /* location.assign('https://pricehbtn-demo.azurewebsites.net/home.html') */
+    const response = await axios.post(
       "https://pricehbtn-crud.azurewebsites.net/product",{
         headers: {
           'logintoken': response_value.token,
@@ -212,7 +212,7 @@ async function create_product(){
           user_id: response_value.user_id
         }
       }
-      ).then(response => console.log('Hola')).catch(error => console.log(error)); */
+      ).then(response => console.log('Hola')).catch(error => console.log(error));
 
     /* MOEEEEZ
 
