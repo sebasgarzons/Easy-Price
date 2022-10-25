@@ -101,7 +101,7 @@ async function get_user_api() {
     console.log(data)
     window.localStorage.setItem('authenticate', JSON.stringify(data));
     response_value = JSON.parse(window.localStorage.getItem('authenticate'));
-    location.assign('https://pricehbtn-demo.azurewebsites.net/home.html')
+    location.assign('home.html')
 
 
   } catch (error) {
@@ -148,7 +148,7 @@ async function register_new_password() {
     await axios.patch('https://pricehbtn-login.azurewebsites.net/login/update/password/', reg_new_password);
     alert('Clave cambiada éxitosamente. Por favor inicia sesión de nuevo.')
     setTimeout(() => {
-      location.assign('https://pricehbtn-demo.azurewebsites.net/index.html')
+      location.assign('index.html')
     }, 500);
   } catch (error) {
     console.error(error);
@@ -196,8 +196,47 @@ async function create_product(){
   let selected_value = document.getElementById('type_prod_create').value;
   console.log(selected_value);
   alert('Producto creado éxitosamente');
-  location.assign('https://pricehbtn-demo.azurewebsites.net/home.html')
-/*     const response = await axios.post(
+
+  const data = {
+    name: document.getElementById('create_nom').value,
+    price: document.getElementById('create_prec').value,
+    measure_unity: document.getElementById('create_unic').value,
+    category: selected_value,
+    user_id: response_value.user_id
+  };
+  console.log('El valor de los campos es ', data)
+  console.log(response_value.token)
+/*   response = fetch("", {
+    method: "POST",
+    headers: {
+      'logintoken': response_value.token,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  
+    body: data
+ */
+
+
+
+/*     var requestOptions = {
+      method: 'POST',
+      headers: {
+        'logintoken': response_value.token,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: data,
+    };
+
+    fetch("https://pricehbtn-crud.azurewebsites.net/product/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error)); */
+
+
+  /* location.assign('https://pricehbtn-demo.azurewebsites.net/home.html') */
+    const response = await axios.post(
       "https://pricehbtn-crud.azurewebsites.net/product",{
         headers: {
           'logintoken': response_value.token,
@@ -212,7 +251,7 @@ async function create_product(){
           user_id: response_value.user_id
         }
       }
-      ).then(response => console.log('Hola')).catch(error => console.log(error)); */
+      ).then(response => console.log('Hola')).catch(error => console.log(error));
 
     /* MOEEEEZ
 
