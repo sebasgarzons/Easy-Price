@@ -219,6 +219,7 @@ async function create_product(){
   console.log(response_value.token)
   response = fetch("", {
     method: "POST",
+    url: 'https://pricehbtn-crud.azurewebsites.net/product/',
     headers: {
       'logintoken': response_value.token,
       'Accept': 'application/json',
