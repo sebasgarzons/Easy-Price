@@ -223,7 +223,11 @@ async function create_product(){
 
 
     try {
-      await axios.post('https://pricehbtn-login.azurewebsites.net/login/register/', data, headers);
+      await axios.post('https://pricehbtn-login.azurewebsites.net/login/register/',{
+        headers: {
+          'logintoken': response_value.token
+        }
+      }, data);
 
 
 
