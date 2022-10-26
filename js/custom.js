@@ -6,6 +6,12 @@ function showHome() {
   console.log("Hola salí de la función");
 }
 
+response_value = JSON.parse(window.localStorage.getItem('authenticate'))??{};
+response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'))??{};
+response_products_user = JSON.parse(window.localStorage.getItem('products_by_user'))??{};
+response_products_by_category = JSON.parse(window.localStorage.getItem('list_products_by_category'))??{};
+
+
 jQuery(document).ready(function ($) {
 
   $(".btn_login, .close_login").click(function () {
@@ -54,15 +60,18 @@ jQuery(document).ready(function ($) {
     $('.pop_up_change_psswrd').fadeIn();
   });
 
+  $('.log_out').click(function () {
+    location.assign('index.html')
+    localStorage.clear();
+  });
+
 });
 
 
-response_value = JSON.parse(window.localStorage.getItem('authenticate'))??{};
-response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'))??{};
+
+
 console.log(response_value);
 let user_name_value = document.getElementById('user_name');
-
-const api_url = 'https://pricehbtn-login.azurewebsites.net/'
 
 
 function get_name_user() {
@@ -113,8 +122,6 @@ async function get_user_api() {
     console.log('Envié datos del login')
     window.localStorage.setItem('authenticate', JSON.stringify(data));
     console.log('Data de usuario antes de enviar a LocalStorage: ', data)
-    show_data_home()
-    
     /* let response_value = JSON.parse(window.localStorage.getItem('authenticate')); */
     location.assign('home.html')
   }catch (error) {
@@ -193,7 +200,8 @@ async function get_all_categories() {
     response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'));
     console.log('El response de categories es', response_categories)
   } catch (error) {
-    alert('Contraseña ó Usuario incorrectos');
+    console.error(error);
+    alert('Error');
   }
 
 
@@ -278,10 +286,10 @@ async function get_only_products_by_category() {
   };
   const response = await axios(config)
   console.log(response.data)
-  window.localStorage.setItem('list_of_categories', JSON.stringify(response.data));
-  response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'));
-  console.log(response_categories)
-  console.log(response_categories[0].name)
+  window.localStorage.setItem('list_products_by_category', JSON.stringify(response.data));
+  response_products_by_category = JSON.parse(window.localStorage.getItem('list_products_by_category'));
+  console.log(response_products_by_category)
+  console.log(response_products_by_category[0].name)
   drawproducts_inDOM()
 }
 
@@ -289,20 +297,20 @@ function drawproducts_inDOM(){
   let draw_products_cont = document.getElementById('draw_products');
   draw_products_cont.innerHTML = '';
   
-  for (let i=0; i<response_categories.length; i++){
+  for (let i=0; i<response_products_by_category.length; i++){
     let draw_products = `
     <div class="card_user">
         <div>
-            <h3>Producto: ${response_categories[i].name}</h3>
-            <h5>Categoría: ${response_categories[i].category}</h5>
-            <p>Precio: ${response_categories[i].price}</p>
+            <h3>Producto: ${response_products_by_category[i].name}</h3>
+            <h5>Categoría: ${response_products_by_category[i].category}</h5>
+            <p>Precio: ${response_products_by_category[i].price}</p>
         </div>
     </div>
     `;
     draw_products_cont.innerHTML += draw_products
   }
 
-  console.log(response_categories[0].name)
+  console.log(response_products_by_category[0].name)
 
 }
 
@@ -387,12 +395,53 @@ async function test() {
     const response = await axios(config)
     console.log(response) */
 
+async function products_accord_user(){
+
+  console.log('Llegué a obtener los productos del usuario')
+  try {
+    const {
+      data
+    } = await axios.get('https://pricehbtn-crud.azurewebsites.net/product/?key=user_id&value=' + response_value.user_id,{
+      headers: {
+        'logintoken': response_value.token
+      }
+    });
+
+    // Respuesta de la API
+    console.log('La data de productos antes del local storage es: ', data)
+    window.localStorage.setItem('products_by_user', JSON.stringify(data));
+    response_products_user = JSON.parse(window.localStorage.getItem('products_by_user'));
+    console.log('El response de productos por usuario es', response_products_user)
+  } catch (error) {
+/*     console.error(error);
+    alert('Error'); */
+  }
+
+  // ACÁ
+  drawproducts_byuser_inDOM()
+}
 
 
+function drawproducts_byuser_inDOM(){
 
+  let draw_products_cont = document.getElementById('draw_products_user');
+  draw_products_cont.innerHTML = '';
 
+  for (let i=0; i<response_products_user.length; i++){
+    let draw_products = `
+    <div class="card_user">
+      <div>
+          <h3>Producto: ${response_products_user[i].name}</h3>
+          <h4>Categoría: ${response_products_user[i].category}</h4>
+          <p>Precio: $${response_products_user[i].price}</p>
+      </div>
+    </div>
+    `;
+    draw_products_cont.innerHTML += draw_products
+  }
 
-
+  console.log(response_products_user[0].name)
+}
 
 /*     try {
       await axios.post('https://pricehbtn-crud.azurewebsites.net/product/',{

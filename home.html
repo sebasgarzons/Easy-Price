@@ -5,30 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App</title>
+    <title>Easy Price</title>
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
     <script src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script defer src="js/particles.min.js"></script>
     <script defer src="js/custom.js"></script>
     <script src="https://kit.fontawesome.com/081b8daddd.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script defer nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <header>
     <nav class="grid">
         <p>Easy Price</p>
         <div>
-            <div>¡Welcome!<span id="user_name"></span>
+            <div>¡Welcome! <span id="user_name"></span>
             </div>
-            <p class="forgot_psswrd">Olvidé la contraseña</p>
+            <p class="forgot_psswrd">Cambiar contraseña</p>
+        </div>
+        <div class="log_out">
+            <ion-icon name="power-outline"></ion-icon>
         </div>
     </nav>
 </header>
 
-<body class="body_home" onload="showHome(), get_name_user(), show_data_home(), get_all_categories()">
+<body class="body_home" onload="showHome(), get_name_user(), show_data_home(), get_all_categories(), products_accord_user()">
 
     <div class="cont_home grid" id="home_greeting">
         <div>
@@ -43,8 +50,8 @@
         </div>
         <h2>Tus Contribuciones</h2>
 
-        <div class="cont_cards">
-            <div class="card_user">
+        <div class="cont_cards" id="draw_products_user">
+<!--             <div class="card_user">
                 <div>
                     <h3>Producto: Tornillos</h3>
                     <h4>Tienda: Walmart</h4>
@@ -91,7 +98,7 @@
                     <a>Editar</a>
                     <a>Borrar</a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="pop_up_change_psswrd">
             <h2>Cambiar contraseña</h2>
