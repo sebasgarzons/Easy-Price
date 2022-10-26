@@ -7,7 +7,6 @@ function showHome() {
 }
 
 jQuery(document).ready(function ($) {
-  
 
   $(".btn_login, .close_login").click(function () {
     $('.cont_login').toggleClass("slid");
@@ -21,14 +20,12 @@ jQuery(document).ready(function ($) {
     e.preventDefault();
     console.log('login');
     get_user_api();
-    console.log('Ya voy al products');
-    get_all_products();
+    console.log('Ejecuté antes de tiempo categories');
   });
 
   $(".submit_register").click(e => {
     e.preventDefault();
     register_user_api();
-
   });
 
   $("#boton_test").click(e => {
@@ -60,8 +57,8 @@ jQuery(document).ready(function ($) {
 });
 
 
-let response_value = JSON.parse(window.localStorage.getItem('authenticate'))??{};
-let response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'))??{};
+response_value = JSON.parse(window.localStorage.getItem('authenticate'))??{};
+response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'))??{};
 console.log(response_value);
 let user_name_value = document.getElementById('user_name');
 
@@ -91,8 +88,19 @@ function get_name_user() {
   });
 } */
 
-async function get_user_api() {
 
+
+
+
+
+
+
+
+
+
+
+
+async function get_user_api() {
   const user_data = {
     email: document.getElementById('username').value,
     password: document.getElementById('password').value
@@ -101,22 +109,23 @@ async function get_user_api() {
     const {
       data
     } = await axios.post('https://pricehbtn-login.azurewebsites.net/login/', user_data);
-
     // Respuesta de la API
-    console.log(data)
+    console.log('Envié datos del login')
     window.localStorage.setItem('authenticate', JSON.stringify(data));
-    response_value = JSON.parse(window.localStorage.getItem('authenticate'));
+    console.log('Data de usuario antes de enviar a LocalStorage: ', data)
+    show_data_home()
+    
+    /* let response_value = JSON.parse(window.localStorage.getItem('authenticate')); */
     location.assign('home.html')
-    console.log('El response es', response_value)
-
-
-  } catch (error) {
-
+  }catch (error) {
     alert('Contraseña ó Usuario incorrectos');
   }
+  
+}
 
-
-
+function show_data_home(){
+  let response_value = JSON.parse(window.localStorage.getItem('authenticate'));
+  console.log('El response es', response_value)
 }
 
 async function register_user_api() {
@@ -166,9 +175,39 @@ async function register_new_password() {
 
 }
 
-async function get_all_products() {
-  console.log('Llegué')
-/*   var config = {
+async function get_all_categories() {
+
+  console.log('Llegó al inicio de obtener categorías')
+  try {
+    const {
+      data
+    } = await axios.get('https://pricehbtn-crud.azurewebsites.net/product/categories', {
+      headers: {
+        'logintoken': response_value.token
+      }
+    });
+
+    // Respuesta de la API
+    console.log('La data de categories es: ', data)
+    window.localStorage.setItem('list_of_categories', JSON.stringify(data));
+    response_categories = JSON.parse(window.localStorage.getItem('list_of_categories'));
+    console.log('El response de categories es', response_categories)
+  } catch (error) {
+    alert('Contraseña ó Usuario incorrectos');
+  }
+
+
+
+
+
+
+
+
+
+
+
+/*   console.log('Llegué')
+  var config = {
     method: 'get',
     url: 'https://pricehbtn-crud.azurewebsites.net/product/categories',
     headers: {
@@ -178,10 +217,10 @@ async function get_all_products() {
 
   const response = await axios(config) */
 
-  var myHeaders = new Headers();
+/*   var myHeaders = new Headers();
   myHeaders.append("logintoken", response_value.token);
-  myHeaders.append("Content-Type", "application/json");
-  
+  myHeaders.append("Content-Type", "application/json"); */
+
 /*   var raw = JSON.stringify({
     "name": "Sal",
     "price": "14500",
@@ -189,24 +228,24 @@ async function get_all_products() {
     "category": "Semillas",
     "user_id": "b753afa7ac8484e95a38119712873580"
   }); */
-  
-  var requestOptions = {
+
+/*   var requestOptions = {
     method: 'GET',
     headers: myHeaders,
-    /* body: raw, */
+    body: raw,
     redirect: 'follow'
   };
   
   fetch("https://pricehbtn-crud.azurewebsites.net/product/categories", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error)); */
 
 
 
 
-  console.log(response.data)
-  window.localStorage.setItem('products', JSON.stringify(response.data))
+/*   console.log(response.data)
+  window.localStorage.setItem('products', JSON.stringify(response.data)) */
   /*   set_data_products_search();
     set_data_products_create(); */
 }
@@ -215,6 +254,16 @@ async function get_all_products() {
 window.addEventListener('load', function () {
   loader.style.display = 'none';
 }); */
+
+
+
+
+
+
+
+
+
+
 
 async function get_only_products_by_category() {
   let selected_value = document.getElementById('type_prod_search').value;
@@ -413,12 +462,21 @@ const response = await axios.post(
 /* console.log('Llegué hasta el response', response.data) */
 
 
-function read_categories() {
+function come_categories_search() {
   console.log('Entré al search')
   const datalist_search = document.getElementById('type_prod_search_datalist')
-  const data_search = JSON.parse(window.localStorage.getItem('products'));
+  const data_search = JSON.parse(window.localStorage.getItem('list_of_categories'));
 
   data_search.forEach(producto => {
       datalist_search.innerHTML += `<option value="${producto}">${producto}</option>`
+  });
+}
+
+function come_categories_create(){
+  const datalist = document.getElementById('type_prod_create_datalist')
+  const data = JSON.parse(localStorage.getItem('list_of_categories'));
+
+  data.forEach(producto => {
+      datalist.innerHTML += `<option>${producto}</option>`
   });
 }

@@ -28,7 +28,7 @@
     </nav>
 </header>
 
-<body onload="get_name_user()">
+<body onload="get_name_user(), come_categories_create()">
     <div class="cont_crear grid">
         <h2>Crear Producto</h2>
         <div>
@@ -75,12 +75,7 @@
         </div>
     </div>
     <script>
-        const datalist = document.getElementById('type_prod_create_datalist')
-        const data = JSON.parse(localStorage.getItem('products'));
 
-        data.forEach(producto => {
-            datalist.innerHTML += `<option>${producto}</option>`
-        });
     </script>
 </body>
 <footer>
