@@ -168,7 +168,7 @@ async function register_new_password() {
 
 async function get_all_products() {
   console.log('Llegué')
-  var config = {
+/*   var config = {
     method: 'get',
     url: 'https://pricehbtn-crud.azurewebsites.net/product/categories',
     headers: {
@@ -176,7 +176,35 @@ async function get_all_products() {
     }
   };
 
-  const response = await axios(config)
+  const response = await axios(config) */
+
+  var myHeaders = new Headers();
+  myHeaders.append("logintoken", response_value.token);
+  myHeaders.append("Content-Type", "application/json");
+  
+/*   var raw = JSON.stringify({
+    "name": "Sal",
+    "price": "14500",
+    "measure_unity": "2",
+    "category": "Semillas",
+    "user_id": "b753afa7ac8484e95a38119712873580"
+  }); */
+  
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    /* body: raw, */
+    redirect: 'follow'
+  };
+  
+  fetch("https://pricehbtn-crud.azurewebsites.net/product/categories", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+
+
+
   console.log(response.data)
   window.localStorage.setItem('products', JSON.stringify(response.data))
   /*   set_data_products_search();
