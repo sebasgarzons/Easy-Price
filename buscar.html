@@ -29,32 +29,26 @@
     </nav>
 </header>
 
-<body onload="get_name_user()">
+<body onload="get_name_user(), read_categories()">
     <div class="cont_crear grid">
         <h2>Buscar Producto</h2>
         <div>
             <form id="crear_prod" class="form_crear_prod">
                 <div>
-                    <div>
-                        <div>
-                            <label>Selecciona el tipo de producto:</label>
+                            <label>Selecciona la categoría del producto</label>
                             <input type="text" id="type_prod_search" name="get_product" list="type_prod_search_datalist"
                                 placeholder="Gasolina">
-                            <datalist id="type_prod_search_datalist">
-
+                            <datalist id="type_prod_search_datalist" value="search">
+                                <option>HOla</option>
                             </datalist>
-                        </div>
-
-                    </div>
-
                 </div>
             </form>
         </div>
-
     </div>
     <div class="buscar">
         <button class="submit_bttn submit_search">Buscar</button>
     </div>
+    <div id="draw_products" class="cont_cards"></div>
     <div class="pop_up_change_psswrd">
         <h2>Cambiar contraseña</h2>
         <p class="close_register close_register_password">X</p>
@@ -67,17 +61,10 @@
         </div>
     </div>
 
-    <script>
-        const datalist_search = document.getElementById('type_prod_search_datalist')
-        const data_search = JSON.parse(localStorage.getItem('products'));
-
-        data_search.forEach(producto => {
-            datalist_search.innerHTML += `<option value="${producto}">${producto}</option>`
-        });
-    </script>
-
 </body>
+<script>
 
+</script>
 <footer>
 
 </footer>
