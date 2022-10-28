@@ -26,7 +26,7 @@
         <div>
             <div>¡Welcome!<span id="user_name"></span>
             </div>
-            <p class="forgot_psswrd">Olvidé la contraseña</p>
+            <p class="forgot_psswrd">I forgot the password</p>
         </div>
         <div class="go_back" onclick="history.back()">
             <ion-icon name="arrow-back-outline"></ion-icon>
@@ -36,13 +36,13 @@
 
 <body onload="get_name_user(), come_categories_create()">
     <div class="cont_crear grid">
-        <h2>Crear Producto</h2>
+        <h2>Create a Product</h2>
         <div>
             <form id="crear_prod" class="form_crear_prod">
                 <div>
                     <div>
                         <div>
-                            <label>Selecciona el la categoría del producto:</label>
+                            <label>Select the product category:</label>
                             <input type="text" id="type_prod_create" placeholder="Gasolina"
                                 list="type_prod_create_datalist">
                             <!--  -->
@@ -51,12 +51,12 @@
                         </div>
                     </div>
                     <div>
-                        <h3>Detalles del Producto:</h3>
-                        <label>Nombre del Producto:</label>
+                        <h3>Details of the Product:</h3>
+                        <label>Name of the Product:</label>
                         <input type="text" id="create_nom" placeholder="Sal">
-                        <label>Precio del producto:</label>
+                        <label>Price of the Product:</label>
                         <input type="number" placeholder="14500" id="create_prec">
-                        <label>Unidades</label>
+                        <label>Units(quantity)</label>
                         <input type="number" placeholder="2" id="create_unic">
                     </div>
                     <div>
@@ -70,14 +70,14 @@
         </div>
     </div>
     <div class="pop_up_change_psswrd">
-        <h2>Cambiar contraseña</h2>
+        <h2>Change Password</h2>
         <p class="close_register close_register_password">X</p>
         <div class="test">
-            <label>Contraseña</label>
+            <label>Password</label>
             <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="actual_password" />
-            <label>Nueva Contraseña</label>
+            <label>New Password</label>
             <input type="password" name="confpassword_reg" placeholder="¡Contraseña123!" id="reg_nw_password" />
-            <button class="submit_bttn submit_password" id="boton_test">Guardar</button>
+            <button class="submit_bttn submit_password" id="boton_test">Save</button>
         </div>
     </div>
     <script>

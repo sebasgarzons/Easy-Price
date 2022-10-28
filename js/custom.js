@@ -125,7 +125,7 @@ async function get_user_api() {
     /* let response_value = JSON.parse(window.localStorage.getItem('authenticate')); */
     location.assign('home.html')
   }catch (error) {
-    alert('Contraseña ó Usuario incorrectos');
+    alert('Incorrect Password or User');
   }
   
 }
@@ -138,7 +138,6 @@ function show_data_home(){
 async function register_user_api() {
 
   const reg_user = {
-
     email: document.getElementById('reg_mail_user').value,
     name: document.getElementById('reg_name_user').value,
     cel: document.getElementById('reg_cel_user').value,
@@ -147,7 +146,7 @@ async function register_user_api() {
   try {
     await axios.post('https://pricehbtn-login.azurewebsites.net/login/register/', reg_user);
     setTimeout(() => {
-      alert('Usuario creado éxitosamente. Por favor inicia sesión')
+      alert('User successfully created. Please log in')
       window.location.reload(true);
     }, 500);
   } catch (error) {
@@ -159,18 +158,16 @@ async function register_user_api() {
 async function register_new_password() {
 
   const reg_new_password = {
-
     email: response_value.email,
     password: document.getElementById('actual_password').value,
     new_password: document.getElementById('reg_nw_password').value
-
   }
 
   console.log(reg_new_password);
 
   try {
     await axios.patch('https://pricehbtn-login.azurewebsites.net/login/update/password/', reg_new_password);
-    alert('Clave cambiada éxitosamente. Por favor inicia sesión de nuevo.')
+    alert('Password successfully changed. Please log in again.mbiada éxitosamente.')
     setTimeout(() => {
       location.assign('index.html')
     }, 500);
@@ -301,9 +298,9 @@ function drawproducts_inDOM(){
     let draw_products = `
     <div class="card_user">
         <div>
-            <h3>Producto: ${response_products_by_category[i].name}</h3>
-            <h5>Categoría: ${response_products_by_category[i].category}</h5>
-            <p>Precio: ${response_products_by_category[i].price}</p>
+            <h3>Product: ${response_products_by_category[i].name}</h3>
+            <h5>Category: ${response_products_by_category[i].category}</h5>
+            <p>Price: ${response_products_by_category[i].price}</p>
         </div>
     </div>
     `;
@@ -321,7 +318,7 @@ function drawproducts_inDOM(){
 async function create_product() {
   let selected_value = document.getElementById('type_prod_create').value;
   console.log(selected_value);
-  alert('Producto creado éxitosamente');
+  alert('Product successfully created');
 
   const data = {
     name: document.getElementById('create_nom').value,
@@ -355,7 +352,7 @@ async function create_product() {
 async function test() {
   let selected_value = document.getElementById('type_prod_create').value;
   console.log(selected_value);
-  alert('Producto creado éxitosamente');
+  alert('Product successfully created');
 
   var myHeaders = new Headers();
   myHeaders.append("logintoken", response_value.token);
@@ -431,9 +428,9 @@ function drawproducts_byuser_inDOM(){
     let draw_products = `
     <div class="card_user">
       <div>
-          <h3>Producto: ${response_products_user[i].name}</h3>
-          <h4>Categoría: ${response_products_user[i].category}</h4>
-          <p>Precio: $${response_products_user[i].price}</p>
+          <h3>Product: ${response_products_user[i].name}</h3>
+          <h4>Category: ${response_products_user[i].category}</h4>
+          <p>Price: $${response_products_user[i].price}</p>
       </div>
     </div>
     `;
